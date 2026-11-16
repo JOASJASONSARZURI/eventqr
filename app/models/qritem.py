@@ -1,5 +1,9 @@
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 from sqlmodel import SQLModel, Field, Relationship
+
+if TYPE_CHECKING:
+    from app.models.user import User
+
 
 class QRItem(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)

@@ -5,7 +5,7 @@ from app.services.auth_service import AuthService
 
 def render_login():
     with ui.card().classes('w-96 absolute-center shadow-lg'):
-        ui.label('QRManager - Login').classes('text-2xl font-bold mb-4 text-primary')
+        ui.label('EventQR - Iniciar sesión').classes('text-2xl font-bold mb-4 text-primary')
         username = ui.input('Usuario').classes('w-full')
         password = ui.input('Contraseña', password=True, password_toggle_button=True).classes('w-full')
 
@@ -17,7 +17,7 @@ def render_login():
                     app.storage.user['authenticated'] = True
                     app.storage.user['user_id'] = user.id
                     app.storage.user['username'] = user.username
-                    ui.navigate.to('/dashboard')
+                    ui.navigate.to('/eventos')
                 else:
                     ui.notify('Credenciales incorrectas', type='negative')
 

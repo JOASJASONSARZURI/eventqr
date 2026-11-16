@@ -5,3 +5,4 @@ __pycache__/
 .venv/
 .nicegui/
 assets/qrs/
+.pytest_cache/

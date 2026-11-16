@@ -16,7 +16,7 @@ def render_dashboard():
         ui.navigate.to('/')
 
     with ui.header().classes('justify-between items-center bg-gray-800 text-white p-4 shadow'):
-        ui.label(f'QRManager | Sesión: {username}').classes('text-lg font-bold')
+        ui.label(f'EventQR | Sesión: {username}').classes('text-lg font-bold')
         ui.button('Cerrar Sesión', on_click=logout).props('flat color=white')
 
     with ui.column().classes('w-full max-w-4xl mx-auto p-4 gap-4'):
