@@ -9,7 +9,7 @@ services:
       APP_NAME: EventQR
       STORAGE_SECRET: ${STORAGE_SECRET:-change-me-demo-secret}
       PORT: 8080
-      DATABASE_URL: postgresql+psycopg://app:app@db:5432/eventqr
+      DATABASE_URL: ${DATABASE_URL:-postgresql+psycopg://app:app@db:5432/eventqr}
     depends_on:
       db:
         condition: service_healthy
