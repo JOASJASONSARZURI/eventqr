@@ -1,0 +1,37 @@
+services:
+  app:
+    build:
+      context: .
+    container_name: eventqr_app
+    ports:
+      - "8080:8080"
+    environment:
+      APP_NAME: EventQR
+      STORAGE_SECRET: ${STORAGE_SECRET:-change-me-demo-secret}
+      PORT: 8080
+      DATABASE_URL: postgresql+psycopg://app:app@db:5432/eventqr
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  db:
+    image: postgres:16-alpine
+    container_name: eventqr_db
+    environment:
+      POSTGRES_DB: eventqr
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U app -d eventqr"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

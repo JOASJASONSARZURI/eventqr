@@ -21,6 +21,7 @@ def dashboard_page():
 if __name__ in {"__main__", "__mp_main__"}:
     ui.run(
         title=settings.APP_NAME,
+        host="0.0.0.0",
         port=settings.PORT,
         storage_secret=settings.STORAGE_SECRET,
         reload=False
